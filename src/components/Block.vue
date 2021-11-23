@@ -7,13 +7,26 @@ export default {
   props: ["delay"],
   data() {
     return {
-      showBlock: false
-    }
+      showBlock: false,
+      timer: null,
+      reactionTime: 0,
+    };
   },
   mounted() {
     setTimeout(() => {
       this.showBlock = true;
     }, this.delay);
+  },
+  methods: {
+    startTimer() {
+      this.timer = setInterval(() => {
+        this.reactionTime += 10;
+        console.log(this.reactionTime);
+      }, 10);
+    },
+    stopTimer() {
+      this.clearInterval(this.timer);
+    },
   },
 };
 </script>
