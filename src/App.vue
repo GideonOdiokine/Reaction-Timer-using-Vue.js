@@ -2,16 +2,18 @@
   <h2>Gidi Reaction Timer</h2>
   <button @click="start" :disabled="isPlaying">Play</button>
   <Block v-if="isPlaying" :delay="delay" @end="endGame" />
-  <p v-if="showScore">Scores {{ score }}</p>
+  <Result v-if="showScore" :score="score" />
 </template>
 
 <script>
 import Block from "./components/Block.vue";
+import Result from "./components/Result.vue";
 
 export default {
   name: "App",
   components: {
     Block,
+    Result,
   },
   data() {
     return {
